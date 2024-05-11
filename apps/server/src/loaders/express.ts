@@ -2,7 +2,7 @@ import express, { Express } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cors from 'cors';
-// import { errorHandler, notFound } from '../middlewares';
+import { errorHandler, notFound } from '../middlewares';
 import sessionsLoader from './sessions';
 import passportLoader from './passport';
 import routesLoader from './routes';
@@ -20,15 +20,15 @@ const expressLoader = (): Express => {
   app.use(express.urlencoded({ extended: true }));
   app.use(helmet());
 
-  databaseLoader();
+  // databaseLoader();
 
   sessionsLoader(app);
   passportLoader(app);
 
   routesLoader(app);
 
-  // app.use(notFound);
-  // app.use(errorHandler);
+  app.use(notFound);
+  app.use(errorHandler);
 
   return app;
 };

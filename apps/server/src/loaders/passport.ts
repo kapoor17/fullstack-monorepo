@@ -5,8 +5,8 @@ import LocalStrategy, {
   IStrategyOptions
 } from 'passport-local';
 import { Types } from 'mongoose';
-// import Customer from '../services/CustomerService';
-// import AuthService from '../services/AuthService';
+import Customer from '../services/CustomerService';
+import AuthService from '../services/AuthService';
 
 const passportLoader = (app: Express) => {
   const customFields: IStrategyOptions = {
@@ -15,8 +15,8 @@ const passportLoader = (app: Express) => {
 
   const verifyCallback: VerifyFunction = async (email, password, done) => {
     try {
-      // const user = await AuthService.login({ email, password });
-      // return done(null, user);
+      const user = await AuthService.login({ email, password });
+      return done(null, user);
     } catch (e) {
       console.error(`Error while authenticating the Customer`);
       return done(e);
@@ -31,13 +31,13 @@ const passportLoader = (app: Express) => {
   passport.use(localStrategy);
 
   passport.serializeUser(async (user, done) => {
-    // done(null, user._id);
+    done(null, user._id);
   });
 
   passport.deserializeUser((_id: Types.ObjectId, done) => {
-    // Customer.findOne({ _id })
-    //   .then((user) => done(null, user))
-    //   .catch((e) => done(e));
+    Customer.findOne({ _id })
+      .then((user) => done(null, user))
+      .catch((e) => done(e));
   });
 
   app.use(passport.initialize());
