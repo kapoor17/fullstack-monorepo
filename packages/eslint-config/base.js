@@ -14,6 +14,9 @@ module.exports = {
   plugins: ['prettier', 'import', '@typescript-eslint', 'only-warn'],
   parser: '@typescript-eslint/parser',
   settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts']
+    },
     'import/resolver': {
       typescript: {
         project
