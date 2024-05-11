@@ -12,6 +12,10 @@ module.exports = {
     'plugin:prettier/recommended'
   ],
   plugins: ['prettier', 'import', '@typescript-eslint', 'only-warn'],
+  rules: {
+    'import/prefer-default-export': 0,
+    'import/no-extraneous-dependencies': 0
+  },
   parser: '@typescript-eslint/parser',
   settings: {
     'import/parsers': {

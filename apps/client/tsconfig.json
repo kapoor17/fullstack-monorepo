@@ -1,0 +1,4 @@
+{
+  "extends": "@fullstack_package/typescript-config/react.json",
+  "include": ["src", "vite.config.ts"]
+}
