@@ -23,7 +23,7 @@ type CustomerMethods = {
   comparePassword: (password: string) => Promise<boolean>;
 };
 
-type CustomerModel = Model<Customer, {}, CustomerMethods>;
+type CustomerModel = Model<Customer, object, CustomerMethods>;
 
 const CustomerSchema = new mongoose.Schema<
   Customer,

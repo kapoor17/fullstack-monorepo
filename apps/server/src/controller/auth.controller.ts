@@ -6,7 +6,7 @@ import AuthService from '../services/AuthService';
 // import CustomerService from '../services/CustomerService';
 
 export const handleRegister = async (
-  req: Request<{}, {}, Customer>,
+  req: Request<object, object, Customer>,
   res: Response<HydratedDocument<Customer>>,
   next: NextFunction
 ) => {
@@ -20,7 +20,7 @@ export const handleRegister = async (
 };
 
 export const handleLogin = async (
-  req: Request<{}, {}, Customer>,
+  req: Request<object, object, Customer>,
   res: Response<HydratedDocument<Customer>>,
   next: NextFunction
 ) => {

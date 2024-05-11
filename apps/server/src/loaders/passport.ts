@@ -4,9 +4,9 @@ import LocalStrategy, {
   VerifyFunction,
   IStrategyOptions
 } from 'passport-local';
+import { Types } from 'mongoose';
 import Customer from '../services/CustomerService';
 import AuthService from '../services/AuthService';
-import { Types } from 'mongoose';
 
 const passportLoader = (app: Express) => {
   const customFields: IStrategyOptions = {

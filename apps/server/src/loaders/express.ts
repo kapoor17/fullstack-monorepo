@@ -1,3 +1,5 @@
+import 'express-async-errors';
+import dotenv from 'dotenv';
 import express, { Express } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -6,10 +8,8 @@ import { errorHandler, notFound } from '../middlewares';
 import sessionsLoader from './sessions';
 import passportLoader from './passport';
 import routesLoader from './routes';
-import databaseLoader from './database';
 
-require('dotenv').config();
-require('express-async-errors');
+dotenv.config();
 
 const expressLoader = (): Express => {
   const app = express();
@@ -19,8 +19,6 @@ const expressLoader = (): Express => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(helmet());
-
-  // databaseLoader();
 
   sessionsLoader(app);
   passportLoader(app);
