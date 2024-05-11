@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --fix"
   },
   "repository": {
     "type": "git",
