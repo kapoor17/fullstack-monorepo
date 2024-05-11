@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --fix --max-warnings 0"
   },
   "repository": {
     "type": "git",
