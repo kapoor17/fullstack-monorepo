@@ -16,6 +16,10 @@ module.exports = {
   env: {
     browser: true
   },
+  globals: {
+    React: true,
+    JSX: true
+  },
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': [

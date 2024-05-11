@@ -12,10 +12,6 @@ module.exports = {
     'plugin:prettier/recommended'
   ],
   plugins: ['prettier', 'import', '@typescript-eslint', 'only-warn'],
-  globals: {
-    React: true,
-    JSX: true
-  },
   parser: '@typescript-eslint/parser',
   settings: {
     'import/resolver': {
