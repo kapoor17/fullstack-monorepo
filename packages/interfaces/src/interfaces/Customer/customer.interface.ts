@@ -14,8 +14,6 @@ export const Customer = z.object({
     .string()
     .min(5, { message: errorMessages.min('Password', 5) })
     .max(50, { message: errorMessages.max('Street', 50) }),
-  address_id: z.string().uuid({ message: errorMessages.invalid('UUID') }),
-  cart_id: z.string().uuid({ message: errorMessages.invalid('UUID') }),
   created_at: z.date({ message: errorMessages.invalid('Date') }),
   updated_at: z.date({ message: errorMessages.invalid('Date') })
 });

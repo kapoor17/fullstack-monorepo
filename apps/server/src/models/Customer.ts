@@ -1,21 +1,13 @@
 import bcrypt from 'bcrypt';
 import mongoose, { HydratedDocument, Model } from 'mongoose';
 import * as z from 'zod';
+import { Customer as ZodCustomerSchema } from '@fullstack_package/interfaces';
 
 declare global {
   namespace Express {
     interface User extends HydratedDocument<Customer> {}
   }
 }
-
-export const ZodCustomerSchema = z.object({
-  name: z
-    .string()
-    .min(5, { message: 'Must be minimum of 5 characters' })
-    .max(20, { message: 'Must be maximum of 20 characters' }),
-  email: z.string().email(),
-  password: z.string().min(5, { message: 'Must be minimum of 5 characters' })
-});
 
 export type Customer = z.infer<typeof ZodCustomerSchema> & CustomerMethods;
 
@@ -29,24 +21,33 @@ const CustomerSchema = new mongoose.Schema<
   Customer,
   CustomerModel,
   CustomerMethods
->({
-  name: {
-    type: String,
-    minLength: 5,
-    maxLength: 20,
-    required: [true, 'Please provide a name']
+>(
+  {
+    first_name: {
+      type: String,
+      minLength: 5,
+      maxLength: 20,
+      required: [true, 'Please provide a name']
+    },
+    last_name: {
+      type: String,
+      minLength: 5,
+      maxLength: 20,
+      required: [true, 'Please provide a name']
+    },
+    email: {
+      type: String,
+      required: [true, 'Please provide an email'],
+      unique: true
+    },
+    password: {
+      type: String,
+      required: [true, 'Please provide a password'],
+      minLength: 5
+    }
   },
-  email: {
-    type: String,
-    required: [true, 'Please provide an email'],
-    unique: true
-  },
-  password: {
-    type: String,
-    required: [true, 'Please provide a password'],
-    minLength: 5
-  }
-});
+  { timestamps: true }
+);
 
 CustomerSchema.pre('save', async function genHash() {
   const salt = await bcrypt.genSalt(10);

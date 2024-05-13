@@ -1,8 +1,9 @@
 {
   "name": "@fullstack_package/interfaces",
-  "private": true,
   "version": "1.0.0",
-  "description": "",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "scripts": {
     "lint": "eslint . --ext ts --fix --max-warnings 0"
   },
