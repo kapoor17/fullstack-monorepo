@@ -1,0 +1,14 @@
+{
+  "name": "@fullstack_package/interfaces",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "lint": "eslint . --ext ts --fix --max-warnings 0"
+  },
+  "dependencies": {
+    "@fullstack_package/eslint-config": "*",
+    "@fullstack_package/typescript-config": "*",
+    "zod": "^3.23.6"
+  }
+}
