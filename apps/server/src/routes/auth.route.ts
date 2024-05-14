@@ -1,13 +1,15 @@
 import { Router } from 'express';
+import { Customer as ZodCustomerSchema } from '@fullstack_package/interfaces';
 import { handleRegister, handleLogin } from '../controller/auth.controller';
 import { authenticate, validateSchema } from '../middlewares';
-import { ZodCustomerSchema } from '../models/Customer';
 
 const authRouter = Router();
 
 authRouter.post(
   '/login',
-  validateSchema({ body: ZodCustomerSchema.omit({ name: true }) }),
+  validateSchema({
+    body: ZodCustomerSchema.pick({ email: true, password: true })
+  }),
   authenticate,
   handleLogin
 );
