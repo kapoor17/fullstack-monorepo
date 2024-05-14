@@ -1,7 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "globalDotEnv": [".env"],
   "globalEnv": [
     "MONGO_PASSWORD",
     "MONGO_USERNAME",
@@ -19,6 +18,7 @@
       "dependsOn": ["^lint"]
     },
     "dev": {
+      "dotEnv": [".env"],
       "cache": false,
       "persistent": true
     }

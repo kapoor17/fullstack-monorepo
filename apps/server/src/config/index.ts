@@ -1,6 +1,4 @@
-import dotenv from 'dotenv';
-
-dotenv.config();
+import 'dotenv/config';
 
 const {
   MONGO_PASSWORD = '',
@@ -10,7 +8,6 @@ const {
   SESSION_SECRET = '',
   NODE_ENV = 'development'
 } = process.env;
-
 const config = {
   mongo: {
     MONGO_USERNAME,

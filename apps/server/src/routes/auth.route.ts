@@ -15,7 +15,13 @@ authRouter.post(
 );
 authRouter.post(
   '/register',
-  validateSchema({ body: ZodCustomerSchema }),
+  validateSchema({
+    body: ZodCustomerSchema.omit({
+      id: true,
+      created_at: true,
+      updated_at: true
+    })
+  }),
   handleRegister
 );
 
