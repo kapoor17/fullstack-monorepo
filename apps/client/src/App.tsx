@@ -1,5 +1,12 @@
+import { Button } from './components/ui/button';
+
 const App = () => {
-  return <>Hello World</>;
+  return (
+    <>
+      <Button>Hi</Button>
+      Hello World
+    </>
+  );
 };
 
 export default App;
