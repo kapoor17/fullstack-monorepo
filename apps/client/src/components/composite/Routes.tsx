@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router';
-import useAuthentication from '../hooks/useAuthentication';
+import useAuthentication from '../../lib/hooks/useAuthentication';
 
 export const PrivateRoutes: React.FC = () => {
   const isAuthenticated = useAuthentication();
